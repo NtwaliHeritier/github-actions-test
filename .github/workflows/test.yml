@@ -3,6 +3,10 @@ on: [push]
 jobs:
   build-project:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_KEY: ${{secrets.VERCEL_ORG_KEY}}
+      VERCEL_PROJ_KEY: ${{secrets.VERCEL_PROJ_KEY}}
+      VERCEL_TOKEN: ${{secrets.TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -14,8 +18,8 @@ jobs:
         run: yarn build
       - name: deploy to vercel
         env:
-          VERCEL_ORG_KEY: sEBm10HX9ILVDJusLsktrjQy
-          VERCEL_PROJ_KEY: prj_SRI6uAhg41sGuxbAGJ0EPEXhXqJQ
+          VERCEL_ORG_KEY: $VERCEL_ORG_KEY
+          VERCEL_PROJ_KEY: $VERCEL_PROJ_KEY
         run: yarn deploy
       - name: setup finish
         run: echo "hurray"
