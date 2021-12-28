@@ -12,5 +12,10 @@ jobs:
         run: yarn
       - name: build the project
         run: yarn build
+      - name: deploy to vercel
+        env:
+          VERCEL_ORG_KEY: sEBm10HX9ILVDJusLsktrjQy
+          VERCEL_PROJ_KEY: prj_SRI6uAhg41sGuxbAGJ0EPEXhXqJQ
+        run: yarn deploy
       - name: setup finish
         run: echo "hurray"
